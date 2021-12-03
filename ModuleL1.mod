@@ -33,9 +33,9 @@ MODULE Module1
         WHILE bExit1=1 DO
             WaitSyncTask ucitana_vrednost,task_list;
             IF count3 = 1 THEN
-                DonesiFlasicu1;
+                DonesiFlasicu3;
                 OdvrniZavrni;
-                OdnesiFlasicu1;
+                OdnesiFlasicu3;
             ENDIF
             IF count4 = 1 THEN
                 DonesiFlasicu2;
@@ -43,10 +43,11 @@ MODULE Module1
                 OdnesiFlasicu2;
             ENDIF
             IF count5 = 1 THEN
-                DonesiFlasicu3;
+                DonesiFlasicu1;
                 OdvrniZavrni;
-                OdnesiFlasicu3;
+                OdnesiFlasicu1;
             ENDIF
+            WaitSyncTask ucitan_izlaz,task_list;
         ENDWHILE
     ENDPROC
     
@@ -66,7 +67,7 @@ MODULE Module1
     PROC DonesiFlasicu1()
         MoveL PocetnaPozicija1,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
         Zgrabi;
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
     ENDPROC
     PROC ZavrtanjeCepa()
         MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
@@ -91,29 +92,29 @@ MODULE Module1
         MoveAbsJ Ugao450,v1000,z100,Servo\WObj:=wobj0;
     ENDPROC
     PROC OdnesiFlasicu1()
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
-        Pusti;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
         MoveL PocetnaPozicija1,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
+        Pusti;
     ENDPROC
     PROC DonesiFlasicu2()
         MoveL PocetnaPozicija2,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
         Zgrabi;
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
     ENDPROC
     PROC OdnesiFlasicu2()
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
-        Pusti;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
         MoveL PocetnaPozicija2,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
+        Pusti;
     ENDPROC
     PROC DonesiFlasicu3()
         MoveL PocetnaPozicija3,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
         Zgrabi;
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
     ENDPROC
     PROC OdnesiFlasicu3()
-        MoveL IznadCase,v1000,z100,Servo\WObj:=FlasaIznadCase;
-        Pusti;
+        MoveAbsJ PocetniUgao,v1000,z100,Servo\WObj:=wobj0;
         MoveL PocetnaPozicija3,v1000,z100,Servo\WObj:=FlasaPocetnaPozicija;
+        Pusti;
     ENDPROC
     PROC Zgrabi()
         g_GripIn;

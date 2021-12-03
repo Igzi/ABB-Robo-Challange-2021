@@ -12,9 +12,9 @@ MODULE Module1
     PERS num count1 := 0;
     PERS num count2 := 0;
     PERS num count3 := 0;
-    PERS num count4 := 1;
+    PERS num count4 := 0;
     PERS num count5 := 0;
-    PERS num bExit1 := 5;
+    PERS num bExit1 := 1;
     VAR num tmp1 := 0;
     VAR syncident cep_skinut;
     VAR syncident cep_sipano;
@@ -89,6 +89,7 @@ MODULE Module1
                 OstaviCasu;
             ENDIF
             TPReadFK bExit1, "Pritisnite dugme Zapocni za novi koktel ili Zavrsi u suprotnom", "Zapocni", stEmpty, stEmpty, stEmpty, "Zavrsi";
+            WaitSyncTask ucitan_izlaz,task_list;
         ENDWHILE
     ENDPROC
     
